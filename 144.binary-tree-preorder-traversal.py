@@ -43,6 +43,7 @@ class Solution:
         res.extend(self.preorderTraversal(root.right))
         return res
 
+class Solution:
     # 回溯算法思路
     def __init__(self):
         self.res = []
