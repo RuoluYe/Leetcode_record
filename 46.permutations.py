@@ -11,7 +11,7 @@ class Solution:
         
         def backtrack(track):
             if len(track) == len(nums):
-                res.append(track.copy())
+                res.append(track[:])
                 return
             for i in nums:
                 if i in track:
