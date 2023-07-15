@@ -12,7 +12,7 @@ class Solution:
         def bt(curr, start):
             res.append(curr[:])
             for i in range(start, len(nums)): # start, otherwise memory limit exceed
-                if i > 0 and nums[i] == nums[i-1]:
+                if i > start and nums[i] == nums[i-1]: # i > start! not i > 0
                     continue
                 
                 bt(curr+[nums[i]], i+1)
@@ -22,3 +22,7 @@ class Solution:
         return res
 # @lc code=end
 
+确保每次for loop 遍历后面的nums，而不是从头遍历
+for i in range(start, len(nums)): 
+    
+    if i > start and ...: # 因为 i = start时是新一层节点，不应跳过， 当i>start时还在该层，应跳过相同的数字
