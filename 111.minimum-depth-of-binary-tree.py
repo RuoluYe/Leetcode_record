@@ -21,22 +21,22 @@ class Solution:
         from queue import Queue
         q = Queue()
         q.put(root)
-        depth = 1
-        
+        depth = 1 # having root = having 1 depth
         
         while q:
             s = q.qsize()
             for i in range(s):
-                cur = q.get()
-                if not cur.left and not cur.right:
+                cur = q.get() # get last node
+                if not cur.left and not cur.right: # base case
                     return depth
-                
+                # q.put(children nodes) for next recursion
                 if cur.left:
-                    q.put(cur.left)
+                    q.put(cur.left) 
                 if cur.right:
                     q.put(cur.right)
-            depth += 1 # update depth outside after examine all node at this level(after for loop ends)
-        
+            # for loop ends, finish examine all nodes at this level
+            # update depth before examine new nodes in queue 
+            depth += 1 
         return depth
         
 # @lc code=end
