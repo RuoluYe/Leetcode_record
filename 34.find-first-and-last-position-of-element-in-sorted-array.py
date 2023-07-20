@@ -7,7 +7,7 @@
 # @lc code=start
 class Solution:
     def searchRange(self, nums: List[int], target: int) -> List[int]:
-        def findleft():
+        def findBound(side):
             left,right = 0, len(nums) - 1
             while left <= right:
                 mid = left + (right-left) //2
@@ -16,24 +16,16 @@ class Solution:
                 elif nums[mid] > target:
                     right = mid - 1
                 elif nums[mid] == target:
-                    right = mid - 1
+                    if side == 'l': # left
+                        right = mid - 1
+                    else:
+                        left = mid + 1
             return left
-        def findright():
-            left,right = 0, len(nums) - 1
-            while left <= right:
-                mid = left + (right-left) //2
-                if nums[mid] < target:
-                    left = mid + 1
-                elif nums[mid] > target:
-                    right = mid - 1
-                elif nums[mid] == target:
-                    left = mid + 1
-            return right
-        left = findleft()
-        if left >= len(nums) or nums[left]!=target:
+        left = findBound('l')
+        if left >= len(nums) or nums[left]!=target: # left 判断：在范围内且=target
             return [-1,-1]
         else:
-            return [left, findright()]
+            return [left, findBound('r')-1]
     
         
         
