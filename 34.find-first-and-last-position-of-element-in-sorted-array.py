@@ -25,7 +25,7 @@ class Solution:
         if left >= len(nums) or nums[left]!=target: # left 判断：在范围内且=target
             return [-1,-1]
         else:
-            return [left, findBound('r')-1]
+            return [left, findBound('r')-1] # right -1 b/c left = right = mid + 1
     
         
         
