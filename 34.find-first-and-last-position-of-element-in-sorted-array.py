@@ -7,6 +7,39 @@
 # @lc code=start
 class Solution:
     def searchRange(self, nums: List[int], target: int) -> List[int]:
+        def findleft():
+            left,right = 0, len(nums) - 1
+            while left <= right:
+                mid = left + (right-left) //2
+                if nums[mid] < target:
+                    left = mid + 1
+                elif nums[mid] > target:
+                    right = mid - 1
+                elif nums[mid] == target:
+                    right = mid - 1
+            return left
+        def findright():
+            left,right = 0, len(nums) - 1
+            while left <= right:
+                mid = left + (right-left) //2
+                if nums[mid] < target:
+                    left = mid + 1
+                elif nums[mid] > target:
+                    right = mid - 1
+                elif nums[mid] == target:
+                    left = mid + 1
+            return right
+        left = findleft()
+        if left >= len(nums) or nums[left]!=target:
+            return [-1,-1]
+        else:
+            return [left, findright()]
+    
+        
+        
+# @lc code=end
+
+def searchRange(self, nums: List[int], target: int) -> List[int]:
         left,right = 0, len(nums)-1
         while left <= right:
             mid = left + (right-left) //2
@@ -26,7 +59,3 @@ class Solution:
             else:
                 rightbound+=1
         return [leftbound,rightbound-1]
-        
-        
-# @lc code=end
-
