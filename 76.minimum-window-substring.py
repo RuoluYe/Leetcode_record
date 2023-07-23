@@ -8,34 +8,40 @@
 class Solution:
     def minWindow(self, s: str, t: str) -> str:
         from collections import defaultdict
+        
         need = defaultdict(int)
         for c in t:
             need[c] += 1
+        
         window = defaultdict(int)
         count = 0
         left, right = 0,0
-        start, end = 0, float('inf')
-        while right < len(s):
+        start, length = 0, float('inf')
+        
+        while right < len(s): #loop thru s
             c = s[right]
             right += 1
-            if c in need:
+            if c in need: 
                 window[c] += 1
-                if window[c] == need[c]: # meet needed letter count
+                if window[c] == need[c]: # meet need for c
                     count += 1
             
             # when count = len(t)
             while count == len(need):
-                if (right - left)  < end:
+                # update substring size
+                # record the last possible substring 
+                if (right - left)  < length:
                     start = left
-                    end = right - left
-                    
+                    length = right - left
+                
+                # check shrinking left & extends right to find smaller possible substring    
                 d = s[left]
                 left += 1
                 if d in need:
                     if window[d] == need[d]:
                         count -= 1
                     window[d] -= 1
-        return "" if end == float('inf') else s[start:start+end]
+        return "" if length == float('inf') else s[start:start+end]
                     
         
         
