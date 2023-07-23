@@ -29,7 +29,6 @@ class Solution:
             l+=1
             if window==need:
                 res.append(l)
-        
 
         return res   
             
