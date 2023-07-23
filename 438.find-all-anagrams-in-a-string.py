@@ -7,6 +7,9 @@
 # @lc code=start
 class Solution:
     def findAnagrams(self, s: str, t: str) -> List[int]:
+        
+        
+
         if len(t) > len(s):
             return[]
         
@@ -28,9 +31,31 @@ class Solution:
                 res.append(l)
         
 
-        return res
-            
-                
+        return res   
             
 # @lc code=end
-
+def findAnagrams(self, s: str, t: str) -> List[int]:
+        if len(t) > len(s):
+            return[]
+        
+        need, window = {}, {}
+        for i in range(len(t)):
+            need[t[i]] = 1+need.get(t[i],0)
+            
+        res = []
+        l,r = 0
+        for r in range(len(s)):
+            ch = s[r]
+            if ch in need:
+                window[ch] = 1+window.get(ch,0)
+            
+            if r-l >= len(t):
+                if window == need:
+                    res.append(l)
+                ch = s[l]
+                l +=1
+                if ch in need:
+                    window[ch]-=1
+                    if window[ch] == 0:
+                        window.pop(ch)
+        return res
