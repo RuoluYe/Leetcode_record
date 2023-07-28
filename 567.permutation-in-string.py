@@ -18,7 +18,7 @@ class Solution:
             right += 1
             if ch in need:
                 window[ch] = window.get(ch,0)+1
-            while right - left >= len(s1):
+            while right - left >= len(s1): # with fixated length!
                 if window == need:
                     return True
                 d = s2[left]
