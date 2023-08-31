@@ -7,23 +7,18 @@
 # @lc code=start
 class Solution:
     def maxProduct(self, nums: List[int]) -> int:
-        if len(nums) == 1:
-            return nums[0]
-        maxP = 0
-        start = 0
+        res = max(nums)
+        curMin, curMax = 1, 1
+        for n in nums:
+            if n == 0:
+                curMin, curMax = 1,1
+                continue
+            tmp = curMax *n
+            curMax = max(n*curMax, n*curMin, n) # dp: keep the current max and min
+            curMin = min(tmp, n*curMin, n)
+            res = max(res, curMax)
         
-        for i in range(len(nums)):
-            product = nums[i]
-            maxP = max(maxP, product)
-            if i+1 == len(nums):
-                return maxP
-            for j in range(i+1, len(nums)):
-                product *= nums[j]
-                maxP = max(maxP, product)
-        return maxP
-                
-            
-            
-            
+        return res
+    
+         
 # @lc code=end
-
