@@ -41,7 +41,7 @@ class Solution:
                     if window[d] == need[d]:
                         count -= 1
                     window[d] -= 1
-        return "" if length == float('inf') else s[start:start+end]
+        return "" if length == float('inf') else s[start:start+length]
                     
         
         
