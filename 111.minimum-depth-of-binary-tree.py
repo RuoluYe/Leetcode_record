@@ -23,9 +23,9 @@ class Solution:
         q.put(root)
         depth = 1 # having root = having 1 depth
         
-        while q:
+        while q: # 循环控制一层层往下走
             s = q.qsize()
-            for i in range(s):
+            for i in range(s): #循环利用size 从左到右遍历
                 cur = q.get() # get last node
                 if not cur.left and not cur.right: # base case
                     return depth

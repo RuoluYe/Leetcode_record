@@ -1,4 +1,4 @@
-#
+  #
 # @lc app=leetcode id=752 lang=python3
 #
 # [752] Open the Lock
