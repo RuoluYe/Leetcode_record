@@ -7,9 +7,6 @@
 # @lc code=start
 class Solution:
     def findAnagrams(self, s: str, t: str) -> List[int]:
-        
-        
-
         if len(t) > len(s):
             return[]
         
