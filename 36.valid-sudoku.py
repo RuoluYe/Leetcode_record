@@ -7,28 +7,23 @@
 # @lc code=start
 class Solution:
     def isValidSudoku(self, board: List[List[str]]) -> bool:
-        numCols = [[] for i in range(len(board))] # numcols[i=1] = the number's occured columns
+        import collections
+        colSet = [set() for i in range(len(board))] # numcols[i=1] = the number's occured columns
         # 0([0,0]-[2,2]), 1([0,3], [5,5]), 
-        numBoxs = [[] for i in range(len(board))] 
+        squares = collections.defaultdict(set) 
+        rowSet = [set() for i in range(len(board))] 
         for r in range(len(board)):
-            rowset = set()
-            for i, num in enumerate(board[r]):
-                if num == ".":
+            for c in range(len(board)):
+                if board[r][c] == ".":
                     continue 
-                if num in rowset:
+                if (board[r][c] in rowSet[r]
+                    or board[r][c] in colSet[c]
+                    or board[r][c] in squares[(r // 3, c // 3)]
+                ):
                     return False
-                rowset.add(i)
-                
-                numIndex = int(num)-1
-                if i in numCols[numIndex]:
-                    return False
-                else:
-                    numCols[numIndex].append(i)
-                
-                boxIndex = (r//3)+(i//3)
-                if i in numBoxs[boxIndex]:
-                    return False
-                numBoxs[boxIndex].append(i)
+                colSet[c].add(board[r][c])
+                rowSet[r].add(board[r][c])
+                squares[(r // 3, c // 3)].add(board[r][c])
         return True
 
                     
