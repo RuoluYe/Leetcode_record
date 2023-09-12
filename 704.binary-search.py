@@ -13,7 +13,7 @@ class Solution:
             if nums[i] == target:
                 return i
             elif nums[i] < target:
-                left = i+1
+                left = i+1.
             else:
                 right = i-1
         return -1
