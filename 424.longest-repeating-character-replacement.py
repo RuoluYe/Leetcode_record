@@ -6,6 +6,7 @@
 
 # @lc code=start
 class Solution:
+    # O(n), O(n)
     def characterReplacement(self, s: str, k: int) -> int:
         
         # maxf should never decrement since maxf+k is the longest
@@ -27,6 +28,8 @@ class Solution:
         return res        
     
 # @lc code=end
+
+# O(26n), O(n)
   def characterReplacement(self, s: str, k: int) -> int:
         
         l = 0
