@@ -23,7 +23,6 @@ class Solution:
             head.next = self.successor 
             return last
         if left == 1:
-            
             return reverseN(head, right) # 反转 left 到 right
         head.next = self.reverseBetween(head.next, left-1, right-1) # this return the reverse linked-list when left = 1
         return head
@@ -40,7 +39,6 @@ def reverseBetween(self, head, left, right):
 
         # prev = node before left, cur = left
         # 2. reverse from left to right
-        
         before = None
         for i in range(left, right+1):
             after = cur.next
@@ -49,4 +47,4 @@ def reverseBetween(self, head, left, right):
         
         prev.next.next=cur
         prev.next = before
-        return dummy.next
+        return dummy.nexts
