@@ -7,7 +7,7 @@
 # @lc code=start
 class Solution:
     def findDuplicate(self, nums: List[int]) -> int:
-        # floyd alogorithm 
+        # floyd alogorithm: fast slow pointer
         slow, fast = 0,0
         while True:
             slow = nums[slow]
